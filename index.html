@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>BRS Film — видеопродакшн, Алматы</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== ШРИФТ: свой шрифт подключается так (раскомментируй и впиши имя в CONFIG.font):
+@font-face{font-family:"MyFont";src:url("myfont.woff2") format("woff2");font-weight:400 800} */
+:root{--bg:#000;--fg:#fff;--mute:#9a9a9a;--line:rgba(255,255,255,.15);--h:72px;
+--font:Montserrat,system-ui,sans-serif;box-sizing:border-box}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--h)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.5 var(--font);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1440px;margin:0 auto;padding:0 48px}
+section{padding:140px 0}
+h2{font-weight:800;font-size:56px;line-height:1;margin:0 0 56px;letter-spacing:-.02em}
+.mute{color:var(--mute)}
+/* header */
+header{position:fixed;inset:0 0 auto;height:var(--h);z-index:50;border-bottom:1px solid transparent;transition:.3s}
+header.s{background:var(--bg);border-color:var(--line)}
+header .w{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:20px;letter-spacing:.08em;cursor:pointer}
+nav{display:flex;gap:32px;font-size:16px}
+nav a{border-bottom:1px solid transparent;transition:.3s}
+nav a:hover{border-color:var(--fg)}
+/* hero */
+.hero{position:relative;height:100vh;min-height:560px;padding:0;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#111}
+.hero .ov{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.hero .w{position:relative;padding-bottom:96px;width:100%}
+h1{font-weight:800;font-size:9vw;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 32px;max-width:14ch}
+.sub{max-width:560px;color:var(--mute);margin:0 0 32px}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;height:56px;padding:0 32px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--fg);transition:.3s}
+.btn.f{background:var(--fg);color:var(--bg)}
+.btn.o:hover{background:var(--fg);color:var(--bg)}
+.btn.f:hover{background:transparent;color:var(--fg)}
+.arr{position:absolute;left:50%;bottom:24px;width:14px;height:14px;border-right:2px solid var(--fg);border-bottom:2px solid var(--fg);transform:translateX(-50%) rotate(45deg);animation:ar 2s ease-in-out infinite}
+@keyframes ar{50%{bottom:14px}}
+/* about */
+.two{display:grid;grid-template-columns:1fr 2fr;gap:48px}
+.two h2{margin:0}
+.about p{margin:0 0 48px;font-size:22px;max-width:44ch}
+.svc{height:64px;display:flex;align-items:center;border-top:1px solid var(--line);font-size:24px;transition:padding .3s}
+.svc:last-child{border-bottom:1px solid var(--line)}
+@media (hover:hover){.svc:hover{padding-left:16px}}
+/* works */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.card{display:block}
+.img{position:relative;aspect-ratio:16/9;overflow:hidden;background:#111;border:1px solid var(--line)}
+.img img,.img video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s,filter .5s}
+.img b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+@media (hover:hover){.card:hover img,.card:hover video{transform:scale(1.05);filter:brightness(.7)}.card:hover .img b{opacity:1}}
+.meta{display:flex;justify-content:space-between;gap:16px;margin-top:16px}
+.meta strong{font-size:22px;font-weight:700}
+.meta span{color:var(--mute);font-size:16px;text-align:right}
+.all{display:block;text-align:right;margin-top:32px;border-bottom:1px solid var(--fg);width:max-content;margin-left:auto}
+/* marquee */
+.mq{overflow:hidden;position:relative}
+.mq::before,.mq::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2}
+.mq::before{left:0;background:linear-gradient(90deg,#000,transparent)}
+.mq::after{right:0;background:linear-gradient(-90deg,#000,transparent)}
+.tr{display:flex;width:max-content;animation:mq 30s linear infinite}
+.tr:hover{animation-play-state:paused}
+.lg{height:130px;margin-right:80px;display:flex;align-items:center;opacity:.8;transition:opacity .3s;white-space:nowrap}
+.lg:hover{opacity:1}
+.lg img{height:130px;width:auto;filter:brightness(0) invert(1)}
+.lg span{font-weight:700;font-size:22px;color:var(--mute)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* contacts */
+#contacts{border-top:1px solid var(--line)}
+#contacts h2{font-size:6.3vw;line-height:.95;text-transform:uppercase;max-width:16ch}
+.cta{display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin-top:40px}
+.cta .btn{height:64px}
+.soc{display:flex;gap:24px}
+.soc a{border-bottom:1px solid transparent;transition:.3s}
+.soc a:hover{border-color:var(--fg)}
+footer{height:80px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+footer .w{height:100%;display:flex;align-items:center;justify-content:space-between}
+.md{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:64px 20px 20px}
+.md.on{display:flex}
+.md .box{width:100%;max-width:1100px;aspect-ratio:16/9;background:#000}
+.md iframe,.md video{width:100%;height:100%;border:0;display:block}
+.md button{position:absolute;top:16px;right:20px;background:none;border:1px solid #fff;color:#fff;width:44px;height:44px;font-size:24px;line-height:1;cursor:pointer}
+.md button:hover{background:#fff;color:#000}
+/* reveal */
+.r{opacity:0;transform:translateY(24px);transition:opacity .8s ease-out,transform .8s ease-out}
+.r.on{opacity:1;transform:none}
+@media (max-width:1024px){section{padding:100px 0}.two{grid-template-columns:1fr;gap:32px}}
+@media (max-width:640px){.w{padding:0 20px}section{padding:64px 0}h1{font-size:13vw}h2{font-size:36px}#contacts h2{font-size:11vw}
+.grid{grid-template-columns:1fr}.btns .btn{width:100%;justify-content:center}.svc{font-size:20px}.lg{margin-right:48px}.about p{font-size:18px}
+.cta{gap:24px}.cta .btn{width:100%;justify-content:center}nav{gap:20px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tr,.arr{animation:none}.r{opacity:1;transform:none;transition:none}}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+</style>
+</head>
+<body>
+<header id="hd"><div class="w"><a class="logo" href="#top" id="logo"></a><nav id="nav"></nav></div></header>
+
+<section class="hero" id="top">
+<div id="bgbox"></div><div class="ov"></div>
+<div class="w">
+<h1 id="h1"></h1><p class="sub" id="sub"></p>
+<div class="btns"><a class="btn f" id="b1" href="#works"></a><a class="btn o" id="b2" href="#contacts"></a></div>
+</div>
+<i class="arr"></i>
+</section>
+
+<section class="about r" id="about"><div class="w two">
+<h2 id="aboutT"></h2>
+<div><p class="mute" id="aboutP"></p><div id="svcs"></div></div>
+</div></section>
+
+<section id="works"><div class="w"><h2 class="r" id="worksT"></h2><div class="grid" id="grid"></div><a class="all" id="all" target="_blank" rel="noopener"></a></div></section>
+<section id="clients"><div class="w"><h2 class="r" id="clientsT"></h2></div><div class="mq r"><div class="tr" id="tr"></div></div></section>
+
+<section id="contacts"><div class="w r">
+<h2 id="cT"></h2><p class="mute" id="cP"></p>
+<div class="cta"><a class="btn f" id="wa" target="_blank" rel="noopener"></a><div class="soc" id="soc"></div></div>
+</div></section>
+
+<div class="md" id="md"><button id="mx" aria-label="Закрыть">×</button><div class="box" id="mb"></div></div>
+<footer><div class="w"><span id="copy"></span><a href="#top" id="up"></a></div></footer>
+
+<script>
+/* =====================================================
+   НАСТРОЙКИ. МЕНЯЙ ТОЛЬКО ЭТОТ БЛОК.
+   Картинки и видео: вставляй ссылки в кавычках.
+   Пустая строка "" = тёмная заглушка.
+   ===================================================== */
+var CONFIG = {
+  font: "Montserrat",               // имя своего шрифта (см. @font-face вверху)
+  brand: "BRS FILM",
+  nav: { works: "Портфолио", contacts: "Контакты" },
+
+  hero: {
+    video: "",                      // ссылка на mp4 (фоновое видео), или пусто
+    image: "",                      // ссылка на картинку, если видео нет
+    title: "Каждая история начинается с идеи",
+    text: "PRE-PRODUCTION → PRODUCTION → POST-PRODUCTION",
+    btn1: "Смотреть портфолио",
+    btn2: "Связаться"
+  },
+
+  about: {
+    title: "Кто мы?",
+    text: "Мы снимаем и монтируем видео для брендов Казахстана. Берём проект от идеи до готового ролика, вы получаете результат без лишней суеты.",
+    services: ["Рекламные ролики","Контент для соцсетей","Продуктовые презентации","Фотосъёмка","Монтаж и цветокоррекция","Пост-продакшн"]
+  },
+
+  works: {
+    title: "Работы",
+    allText: "Все работы", allLink: "#",
+    items: [
+      { name:"MJ", type:"MUSIC VUDEO, 2026",     img:"", link:"https://vimeo.com/1242363462" },
+      { name:"Бренд 2", type:"Контент, 2026",     img:"", link:"#" },
+      { name:"Бренд 3", type:"Презентация, 2025", img:"", link:"#" },
+      { name:"Бренд 4", type:"Реклама, 2025",     img:"", link:"#" },
+      { name:"Бренд 5", type:"Контент, 2025",     img:"", link:"#" },
+      { name:"Бренд 6", type:"Фото, 2025",        img:"", link:"#" }
+    ]
+  },
+
+  clients: {
+    title: "Нам доверяют",
+    // ссылка на логотип (PNG/SVG). Цвет не важен, станет белым. name показывается, пока ссылки нет.
+    logos: [
+      { name:"ALPHA", src:"logo/ALPHA.png" },{ name:"ASNAD", src:"logo/ASNAD.png" },{ name:"Логотип 3", src:"logo/ATAMEKEN.png" },{ name:"Логотип 4", src:"logo/BASQUR.png" },{ name:"Логотип 5", src:"logo/HIKMET.png" },{ name:"Логотип 7", src:"logo/OYU.png" },{ name:"Логотип 7", src:"logo/VISIT ASTANA.png" },{ name:"Логотип 7", src:"logo/VISA FW.png" },{ name:"Логотип 7", src:"logo/SALEM.png" },{ name:"Логотип 7", src:"logo/MYCAR.png" },{ name:"Логотип 7", src:"logo/MELLO.png" },{ name:"Логотип 7", src:"logo/COFFEE EXPERT.png" },{ name:"Логотип 7", src:"logo/MAXI TEA.png" },{ name:"Логотип 7", src:"logo/UNICO.png" },{ name:"Логотип 7", src:"logo/UMAY.png" },{ name:"Логотип 7", src:"logo/SHEBER.png" },{ name:"Логотип 7", src:"logo/RSPC DARYN_.png" },{ name:"Логотип 7", src:"logo/MB R.png" },{ name:"Логотип 7", src:"logo/LAIWO.png" },{ name:"Логотип 7", src:"logo/KOR cinema.png" },{ name:"Логотип 7", src:"logo/Billion co.png" },{ name:"Логотип 7", src:"logo/BIPL.png" },{ name:"Логотип 7", src:"logo/dr kong.png" },{ name:"Логотип 7", src:"logo/CAREFOOD.png" },{ name:"Логотип 6", src:"logo/JANA POST.png" },{ name:"Логотип 7", src:"logo/jibek joly.png" },{ name:"Логотип 8", src:"logo/KAZ MIN.png" }
+    ]
+  },
+
+  contacts: {
+    title: "Готовы сделать крутой проект?",
+    text: "Напишите, расскажите о задаче, мы ответим в течение дня.",
+    waText: "Написать в WhatsApp", waLink: "https://wa.me/77000000000",
+    links: [
+      { text:"Instagram", href:"https://instagram.com/" },
+      { text:"Telegram",  href:"https://t.me/" },
+      { text:"Email",     href:"mailto:hello@brsfilm.kz" }
+    ]
+  },
+
+  footer: { copy: "© BRS Film, Алматы", up: "Наверх" }
+};
+/* ================= конец настроек ================= */
+
+(function(){
+var C=CONFIG,$=function(i){return document.getElementById(i)};
+function T(i,t){$(i).textContent=t}
+document.documentElement.style.setProperty('--font','"'+C.font+'",Montserrat,system-ui,sans-serif');
+T('logo',C.brand);
+$('nav').innerHTML='<a href="#works"></a><a href="#contacts"></a>';
+$('nav').children[0].textContent=C.nav.works;$('nav').children[1].textContent=C.nav.contacts;
+T('h1',C.hero.title);T('sub',C.hero.text);T('b1',C.hero.btn1);T('b2',C.hero.btn2);
+var bg=$('bgbox');
+if(C.hero.video){var v=document.createElement('video');v.className='bg';v.src=C.hero.video;v.autoplay=v.muted=v.loop=v.playsInline=true;v.setAttribute('muted','');if(C.hero.image)v.poster=C.hero.image;bg.appendChild(v)}
+else if(C.hero.image){var im=document.createElement('img');im.className='bg';im.src=C.hero.image;im.alt='';bg.appendChild(im)}
+else{var d=document.createElement('div');d.className='bg';bg.appendChild(d)}
+T('aboutT',C.about.title);T('aboutP',C.about.text);
+C.about.services.forEach(function(s){var d=document.createElement('div');d.className='svc';d.textContent=s;$('svcs').appendChild(d)});
+function parseV(u){
+ if(!u)return null;var m;
+ if(m=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([\w-]{11})/))return{t:'yt',id:m[1],src:'https://www.youtube.com/embed/'+m[1]+'?autoplay=1&rel=0'};
+ if(m=u.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-z0-9]+))?/i))return{t:'vm',id:m[1],src:'https://player.vimeo.com/video/'+m[1]+'?autoplay=1'+(m[2]?'&h='+m[2]:'')};
+ if(/\.(mp4|webm|mov)(\?|$)/i.test(u))return{t:'file',src:u};
+ return null}
+var md=$('md'),mb=$('mb');
+function openM(v){
+ mb.innerHTML='';var el;
+ if(v.t==='file'){el=document.createElement('video');el.src=v.src;el.controls=true;el.autoplay=true;el.playsInline=true}
+ else{el=document.createElement('iframe');el.src=v.src;el.allow='autoplay; fullscreen; picture-in-picture';el.allowFullscreen=true;el.referrerPolicy='strict-origin-when-cross-origin'}
+ mb.appendChild(el);md.classList.add('on');document.body.style.overflow='hidden'}
+function closeM(){md.classList.remove('on');mb.innerHTML='';document.body.style.overflow=''}
+$('mx').onclick=closeM;md.addEventListener('click',function(e){if(e.target===md)closeM()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeM()});
+T('worksT',C.works.title);
+C.works.items.forEach(function(w){
+ var a=document.createElement('a');a.className='card r';a.href=w.link||'#';a.target='_blank';a.rel='noopener';
+ var box=document.createElement('div');box.className='img';
+ var pv=parseV(w.link),th=w.img||(pv&&pv.t==='yt'?'https://i.ytimg.com/vi/'+pv.id+'/hqdefault.jpg':(pv&&pv.t==='vm'?'https://vumbnail.com/'+pv.id+'.jpg':''));
+ if(th){var m=document.createElement('img');m.src=th;m.alt=w.name;m.loading='lazy';box.appendChild(m)}
+ a.addEventListener('click',function(e){if(pv){e.preventDefault();openM(pv)}});
+ var b=document.createElement('b');b.textContent='Смотреть';box.appendChild(b);
+ var meta=document.createElement('div');meta.className='meta';
+ var s=document.createElement('strong');s.textContent=w.name;var p=document.createElement('span');p.textContent=w.type;
+ meta.appendChild(s);meta.appendChild(p);a.appendChild(box);a.appendChild(meta);$('grid').appendChild(a)});
+var al=$('all');al.textContent=C.works.allText;al.href=C.works.allLink;
+T('clientsT',C.clients.title);
+for(var k=0;k<2;k++)C.clients.logos.forEach(function(l){
+ var d=document.createElement('div');d.className='lg';
+ if(l.src){var i=document.createElement('img');i.src=l.src;i.alt=l.name;i.loading='lazy';d.appendChild(i)}
+ else{var s=document.createElement('span');s.textContent=l.name;d.appendChild(s)}
+ $('tr').appendChild(d)});
+T('cT',C.contacts.title);T('cP',C.contacts.text);
+var wa=$('wa');wa.textContent=C.contacts.waText;wa.href=C.contacts.waLink;
+C.contacts.links.forEach(function(l){var a=document.createElement('a');a.textContent=l.text;a.href=l.href;if(l.href.indexOf('mailto')!==0){a.target='_blank';a.rel='noopener'}$('soc').appendChild(a)});
+T('copy',C.footer.copy);T('up',C.footer.up);
+var hd=$('hd');function sc(){hd.classList.toggle('s',scrollY>80)}addEventListener('scroll',sc,{passive:true});sc();
+var els=document.querySelectorAll('.r');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});els.forEach(function(e){io.observe(e)})}
+else els.forEach(function(e){e.classList.add('on')});
+})();
+</script>
+</body>
+</html>
