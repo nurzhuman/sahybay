@@ -20,7 +20,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.5 var(--font)
 a{color:inherit;text-decoration:none}
 .w{max-width:1440px;margin:0 auto;padding:0 48px}
 section{padding:140px 0}
-h2{font-weight:800;font-size:56px;line-height:1;margin:0 0 56px;letter-spacing:-.02em}
+h2{font-weight:500;font-size:35px;line-height:1;margin:0 0 56px;letter-spacing:-.02em}
 .mute{color:var(--mute)}
 /* header */
 header{position:fixed;inset:0 0 auto;height:var(--h);z-index:50;border-bottom:1px solid transparent;transition:.3s}
@@ -35,7 +35,7 @@ nav a:hover{border-color:var(--fg)}
 .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#111}
 .hero .ov{position:absolute;inset:0;background:rgba(0,0,0,.5)}
 .hero .w{position:relative;padding-bottom:96px;width:100%}
-h1{font-weight:800;font-size:9vw;line-height:.95;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 32px;max-width:14ch}
+h1{font-weight:700;font-size:6vw;line-height:.90;letter-spacing:-.0em;text-transform:uppercase;margin:0 0 200px;max-width:20ch}
 .sub{max-width:560px;color:var(--mute);margin:0 0 32px}
 .btns{display:flex;gap:16px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;height:56px;padding:0 32px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--fg);transition:.3s}
@@ -47,8 +47,8 @@ h1{font-weight:800;font-size:9vw;line-height:.95;letter-spacing:-.02em;text-tran
 /* about */
 .two{display:grid;grid-template-columns:1fr 2fr;gap:48px}
 .two h2{margin:0}
-.about p{margin:0 0 48px;font-size:22px;max-width:44ch}
-.svc{height:64px;display:flex;align-items:center;border-top:1px solid var(--line);font-size:24px;transition:padding .3s}
+.about p{margin:0 0 10px;font-size:15px;max-width:100ch}
+.svc{height:40px;display:flex;align-items:center;border-top:1px solid var(--line);font-size:15px;transition:padding .3s}
 .svc:last-child{border-bottom:1px solid var(--line)}
 @media (hover:hover){.svc:hover{padding-left:16px}}
 /* works */
@@ -136,12 +136,12 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--fg);outline-offset:4p
    Пустая строка "" = тёмная заглушка.
    ===================================================== */
 var CONFIG = {
-  font: "Montserrat",               // имя своего шрифта (см. @font-face вверху)
-  brand: "BRS FILM",
+  font: "MEDEO",                    // имя своего шрифта (см. @font-face вверху)
+  brand: "Sahybay",
   nav: { works: "Портфолио", contacts: "Контакты" },
 
   hero: {
-    video: "",                      // ссылка на mp4 (фоновое видео), или пусто
+    video: "video/background.mp4",                      // ссылка на mp4 (фоновое видео), или пусто
     image: "",                      // ссылка на картинку, если видео нет
     title: "Каждая история начинается с идеи",
     text: "PRE-PRODUCTION → PRODUCTION → POST-PRODUCTION",
@@ -150,9 +150,9 @@ var CONFIG = {
   },
 
   about: {
-    title: "Кто мы?",
-    text: "Мы снимаем и монтируем видео для брендов Казахстана. Берём проект от идеи до готового ролика, вы получаете результат без лишней суеты.",
-    services: ["Рекламные ролики","Контент для соцсетей","Продуктовые презентации","Фотосъёмка","Монтаж и цветокоррекция","Пост-продакшн"]
+    title: "Кто такой Sahybay?",
+    text: "Человек, чей профессиональный путь начался в Таразе и продолжился в казахстанском кинопроизводстве. За его плечами — работа над полнометражными картинами, опыт на съёмочных площадках и сотрудничество с брендами. Сегодня он развивает собственное направление в рекламном производстве, объединяя операторское мастерство и работу с профессиональной командой.",
+    services: ["Организация и решение технических задач на площадке","Подбор камер, оптики, света и съёмочных решений","Операторская разработка и визуальная концепция","Раскадровка и техническая подготовка съёмок","Работа на коммерческих проектах","Пост-продакшн"]
   },
 
   works: {
@@ -160,16 +160,16 @@ var CONFIG = {
     allText: "Все работы", allLink: "#",
     items: [
       { name:"MJ", type:"MUSIC VUDEO, 2026",     img:"", link:"https://vimeo.com/1242363462" },
-      { name:"Бренд 2", type:"Контент, 2026",     img:"", link:"#" },
-      { name:"Бренд 3", type:"Презентация, 2025", img:"", link:"#" },
+      { name:"A.Z.", type:"MUSIC VUDEO, 2026",     img:"", link:"https://vimeo.com/1242568479" },
+      { name:"SHEBER", type:"Презентация, 2026", img:"", link:"https://vimeo.com/1242574324" },
       { name:"Бренд 4", type:"Реклама, 2025",     img:"", link:"#" },
       { name:"Бренд 5", type:"Контент, 2025",     img:"", link:"#" },
-      { name:"Бренд 6", type:"Фото, 2025",        img:"", link:"#" }
+      { name:"Таптым-ау сені 2", type:"2024",        img:"", link:"https://vimeo.com/1242572681" }
     ]
   },
 
   clients: {
-    title: "Нам доверяют",
+    title: "Мне доверили",
     // ссылка на логотип (PNG/SVG). Цвет не важен, станет белым. name показывается, пока ссылки нет.
     logos: [
       { name:"ALPHA", src:"logo/ALPHA.png" },{ name:"ASNAD", src:"logo/ASNAD.png" },{ name:"Логотип 3", src:"logo/ATAMEKEN.png" },{ name:"Логотип 4", src:"logo/BASQUR.png" },{ name:"Логотип 5", src:"logo/HIKMET.png" },{ name:"Логотип 7", src:"logo/OYU.png" },{ name:"Логотип 7", src:"logo/VISIT ASTANA.png" },{ name:"Логотип 7", src:"logo/VISA FW.png" },{ name:"Логотип 7", src:"logo/SALEM.png" },{ name:"Логотип 7", src:"logo/MYCAR.png" },{ name:"Логотип 7", src:"logo/MELLO.png" },{ name:"Логотип 7", src:"logo/COFFEE EXPERT.png" },{ name:"Логотип 7", src:"logo/MAXI TEA.png" },{ name:"Логотип 7", src:"logo/UNICO.png" },{ name:"Логотип 7", src:"logo/UMAY.png" },{ name:"Логотип 7", src:"logo/SHEBER.png" },{ name:"Логотип 7", src:"logo/RSPC DARYN_.png" },{ name:"Логотип 7", src:"logo/MB R.png" },{ name:"Логотип 7", src:"logo/LAIWO.png" },{ name:"Логотип 7", src:"logo/KOR cinema.png" },{ name:"Логотип 7", src:"logo/Billion co.png" },{ name:"Логотип 7", src:"logo/BIPL.png" },{ name:"Логотип 7", src:"logo/dr kong.png" },{ name:"Логотип 7", src:"logo/CAREFOOD.png" },{ name:"Логотип 6", src:"logo/JANA POST.png" },{ name:"Логотип 7", src:"logo/jibek joly.png" },{ name:"Логотип 8", src:"logo/KAZ MIN.png" }
@@ -179,11 +179,11 @@ var CONFIG = {
   contacts: {
     title: "Готовы сделать крутой проект?",
     text: "Напишите, расскажите о задаче, мы ответим в течение дня.",
-    waText: "Написать в WhatsApp", waLink: "https://wa.me/77000000000",
+    waText: "Написать в WhatsApp", waLink: "https://wa.me/77766023214",
     links: [
-      { text:"Instagram", href:"https://instagram.com/" },
-      { text:"Telegram",  href:"https://t.me/" },
-      { text:"Email",     href:"mailto:hello@brsfilm.kz" }
+      { text:"Instagram", href:"https://www.instagram.com/sahybay/" },
+      { text:"Telegram",  href:"https://t.me/pecassoo" },
+      { text:"Email",     href:"sahybayy@gmail.com" }
     ]
   },
 
@@ -194,7 +194,7 @@ var CONFIG = {
 (function(){
 var C=CONFIG,$=function(i){return document.getElementById(i)};
 function T(i,t){$(i).textContent=t}
-document.documentElement.style.setProperty('--font','"'+C.font+'",Montserrat,system-ui,sans-serif');
+document.documentElement.style.setProperty('--font','"'+C.font+'",monospace,system-ui,sans-serif');
 T('logo',C.brand);
 $('nav').innerHTML='<a href="#works"></a><a href="#contacts"></a>';
 $('nav').children[0].textContent=C.nav.works;$('nav').children[1].textContent=C.nav.contacts;
