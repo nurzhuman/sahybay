@@ -66,16 +66,16 @@ h1{font-weight:700;font-size:6vw;line-height:.90;letter-spacing:-.0em;text-trans
 .all{display:block;text-align:right;margin-top:32px;border-bottom:1px solid var(--fg);width:max-content;margin-left:auto}
 /* marquee */
 .mq{overflow:hidden;position:relative}
-.mq::before,.mq::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2}
+.mq::before,.mq::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
 .mq::before{left:0;background:linear-gradient(90deg,#000,transparent)}
 .mq::after{right:0;background:linear-gradient(-90deg,#000,transparent)}
-.tr{display:flex;width:max-content;animation:mq 30s linear infinite}
-.tr:hover{animation-play-state:paused}
-.lg{height:130px;margin-right:80px;display:flex;align-items:center;opacity:.8;transition:opacity .3s;white-space:nowrap}
+.tr{display:flex;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.tr::-webkit-scrollbar{display:none}
+.tr.drag{cursor:grabbing;user-select:none}
+.lg{flex:0 0 auto;height:130px;margin-right:80px;display:flex;align-items:center;opacity:.8;transition:opacity .3s;white-space:nowrap}
 .lg:hover{opacity:1}
 .lg img{height:130px;width:auto;filter:brightness(0) invert(1)}
 .lg span{font-weight:700;font-size:22px;color:var(--mute)}
-@keyframes mq{to{transform:translateX(-50%)}}
 /* contacts */
 #contacts{border-top:1px solid var(--line)}
 #contacts h2{font-size:6.3vw;line-height:.95;text-transform:uppercase;max-width:16ch}
@@ -293,6 +293,36 @@ var hd=$('hd');function sc(){hd.classList.toggle('s',scrollY>80)}addEventListene
 var els=document.querySelectorAll('.r');
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});els.forEach(function(e){io.observe(e)})}
 else els.forEach(function(e){e.classList.add('on')});
+
+/* бегущая лента логотипов: сама крутится, можно листать пальцем или мышкой */
+(function(){
+ var tr=$('tr');
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+ var pos=0,last=0,lastUser=0,drag=false,sx=0,sl=0;
+ var SPEED=0.05;      /* скорость: px в миллисекунду. Больше число = быстрее */
+ var WAIT=2000;       /* через сколько мс после касания лента снова поедет */
+ function half(){return tr.scrollWidth/2}
+ function touch(){lastUser=Date.now()}
+ ['touchstart','touchmove','touchend','wheel'].forEach(function(n){tr.addEventListener(n,touch,{passive:true})});
+ tr.addEventListener('scroll',function(){
+  var h=half();if(!h)return;
+  if(tr.scrollLeft>=h)tr.scrollLeft-=h;
+  else if(tr.scrollLeft<=0)tr.scrollLeft+=h;
+ },{passive:true});
+ tr.addEventListener('mousedown',function(e){drag=true;sx=e.pageX;sl=tr.scrollLeft;tr.classList.add('drag');touch()});
+ addEventListener('mousemove',function(e){if(!drag)return;tr.scrollLeft=sl-(e.pageX-sx);touch()});
+ addEventListener('mouseup',function(){if(drag){drag=false;tr.classList.remove('drag');touch()}});
+ function loop(t){
+  var dt=Math.min(t-last,50);last=t;
+  var h=half();
+  if(h>0){
+   if(drag||Date.now()-lastUser<WAIT){pos=tr.scrollLeft}
+   else{pos+=dt*SPEED;if(pos>=h)pos-=h;tr.scrollLeft=pos}
+  }
+  requestAnimationFrame(loop);
+ }
+ if(!reduce)requestAnimationFrame(function(t){last=t;loop(t)});
+})();
 })();
 </script>
 </body>
