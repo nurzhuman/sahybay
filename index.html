@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark">
 <title>BRS Film — видеопродакшн, Алматы</title>
 <style>
@@ -15,12 +16,12 @@
 :root{--bg:#000;--fg:#fff;--mute:#9a9a9a;--line:rgba(255,255,255,.15);--h:72px;
 --font:"MEDEO",sans-serif;box-sizing:border-box}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:var(--h)}
+html{scroll-behavior:smooth;scroll-padding-top:var(--h);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.5 var(--font);overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 .w{max-width:1440px;margin:0 auto;padding:0 48px}
 section{padding:140px 0}
-h2{font-weight:500;font-size:35px;line-height:1;margin:0 0 56px;letter-spacing:-.02em}
+h2{font-weight:500;font-size:35px;line-height:1;margin:0 0 56px;letter-spacing:-.02em;overflow-wrap:anywhere}
 .mute{color:var(--mute)}
 /* header */
 header{position:fixed;inset:0 0 auto;height:var(--h);z-index:50;border-bottom:1px solid transparent;transition:.3s}
@@ -31,7 +32,7 @@ nav{display:flex;gap:32px;font-size:16px}
 nav a{border-bottom:1px solid transparent;transition:.3s}
 nav a:hover{border-color:var(--fg)}
 /* hero */
-.hero{position:relative;height:100vh;min-height:560px;padding:0;display:flex;align-items:flex-end;overflow:hidden}
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;padding:0;display:flex;align-items:flex-end;overflow:hidden}
 .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#111}
 .hero .ov{position:absolute;inset:0;background:rgba(0,0,0,.5)}
 .hero .w{position:relative;padding-bottom:96px;width:100%}
@@ -45,10 +46,11 @@ h1{font-weight:700;font-size:6vw;line-height:.90;letter-spacing:-.0em;text-trans
 .arr{position:absolute;left:50%;bottom:24px;width:14px;height:14px;border-right:2px solid var(--fg);border-bottom:2px solid var(--fg);transform:translateX(-50%) rotate(45deg);animation:ar 2s ease-in-out infinite}
 @keyframes ar{50%{bottom:14px}}
 /* about */
+.two>*{min-width:0}
 .two{display:grid;grid-template-columns:1fr 2fr;gap:48px}
 .two h2{margin:0}
 .about p{margin:0 0 10px;font-size:15px;max-width:100ch}
-.svc{height:40px;display:flex;align-items:center;border-top:1px solid var(--line);font-size:15px;transition:padding .3s}
+.svc{min-height:40px;padding:10px 0;display:flex;align-items:center;border-top:1px solid var(--line);font-size:15px;transition:padding .3s;overflow-wrap:anywhere}
 .svc:last-child{border-bottom:1px solid var(--line)}
 @media (hover:hover){.svc:hover{padding-left:16px}}
 /* works */
@@ -94,9 +96,29 @@ footer .w{height:100%;display:flex;align-items:center;justify-content:space-betw
 .r{opacity:0;transform:translateY(24px);transition:opacity .8s ease-out,transform .8s ease-out}
 .r.on{opacity:1;transform:none}
 @media (max-width:1024px){section{padding:100px 0}.two{grid-template-columns:1fr;gap:32px}}
-@media (max-width:640px){.w{padding:0 20px}section{padding:64px 0}h1{font-size:13vw}h2{font-size:36px}#contacts h2{font-size:11vw}
-.grid{grid-template-columns:1fr}.btns .btn{width:100%;justify-content:center}.svc{font-size:20px}.lg{margin-right:48px}.about p{font-size:18px}
-.cta{gap:24px}.cta .btn{width:100%;justify-content:center}nav{gap:20px;font-size:14px}}
+@media (max-width:640px){
+ .w{padding:0 18px}
+ section{padding:56px 0}
+ .logo{font-size:16px}
+ nav{gap:16px;font-size:13px}
+ .hero .w{padding-bottom:72px}
+ h1{font-size:9vw;margin:0 0 40px;max-width:100%;overflow-wrap:anywhere}
+ .sub{font-size:13px}
+ .btn{height:48px;font-size:12px;padding:0 20px}
+ .btns .btn{width:100%;justify-content:center}
+ h2{font-size:26px;margin:0 0 32px}
+ .about p{font-size:14px}
+ .svc{font-size:14px}
+ .grid{grid-template-columns:1fr;gap:24px}
+ .meta strong{font-size:17px}
+ .meta span{font-size:13px}
+ .lg{height:70px;margin-right:40px}
+ .lg img{height:70px}
+ #contacts h2{font-size:8vw}
+ .cta{gap:20px}
+ .cta .btn{width:100%;height:52px;justify-content:center}
+ footer{font-size:12px}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tr,.arr{animation:none}.r{opacity:1;transform:none;transition:none}}
 a:focus-visible,.btn:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
 </style>
@@ -183,7 +205,7 @@ var CONFIG = {
     links: [
       { text:"Instagram", href:"https://www.instagram.com/sahybay/" },
       { text:"Telegram",  href:"https://t.me/pecassoo" },
-      { text:"Email",     href:"sahybayy@gmail.com" }
+      { text:"Email",     href:"mailto:sahybayy@gmail.com" }
     ]
   },
 
@@ -200,7 +222,22 @@ $('nav').innerHTML='<a href="#works"></a><a href="#contacts"></a>';
 $('nav').children[0].textContent=C.nav.works;$('nav').children[1].textContent=C.nav.contacts;
 T('h1',C.hero.title);T('sub',C.hero.text);T('b1',C.hero.btn1);T('b2',C.hero.btn2);
 var bg=$('bgbox');
-if(C.hero.video){var v=document.createElement('video');v.className='bg';v.src=C.hero.video;v.autoplay=v.muted=v.loop=v.playsInline=true;v.setAttribute('muted','');if(C.hero.image)v.poster=C.hero.image;bg.appendChild(v)}
+if(C.hero.video){
+ var v=document.createElement('video');
+ v.className='bg';
+ v.muted=true;v.defaultMuted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.controls=false;
+ v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');
+ v.setAttribute('disablepictureinpicture','');
+ v.preload='auto';
+ if(C.hero.image)v.poster=C.hero.image;
+ v.src=C.hero.video;
+ bg.appendChild(v);
+ var pl=function(){var p=v.play();if(p&&p.catch)p.catch(function(){})};
+ pl();
+ v.addEventListener('canplay',pl);
+ document.addEventListener('touchstart',pl,{once:true,passive:true});
+ document.addEventListener('visibilitychange',function(){if(!document.hidden)pl()});
+}
 else if(C.hero.image){var im=document.createElement('img');im.className='bg';im.src=C.hero.image;im.alt='';bg.appendChild(im)}
 else{var d=document.createElement('div');d.className='bg';bg.appendChild(d)}
 T('aboutT',C.about.title);T('aboutP',C.about.text);
@@ -224,18 +261,28 @@ T('worksT',C.works.title);
 C.works.items.forEach(function(w){
  var a=document.createElement('a');a.className='card r';a.href=w.link||'#';a.target='_blank';a.rel='noopener';
  var box=document.createElement('div');box.className='img';
- var pv=parseV(w.link),th=w.img||(pv&&pv.t==='yt'?'https://i.ytimg.com/vi/'+pv.id+'/hqdefault.jpg':(pv&&pv.t==='vm'?'https://vumbnail.com/'+pv.id+'.jpg':''));
- if(th){var m=document.createElement('img');m.src=th;m.alt=w.name;m.loading='lazy';box.appendChild(m)}
+ var pv=parseV(w.link),th=w.img||(pv&&pv.t==='yt'?'https://i.ytimg.com/vi/'+pv.id+'/hqdefault.jpg':'');
+ var m=document.createElement('img');m.alt=w.name;m.decoding='async';
+ m.onerror=function(){m.style.display='none'};
+ if(th){m.src=th;box.appendChild(m)}
+ else if(pv&&pv.t==='vm'){
+  box.appendChild(m);
+  fetch('https://vimeo.com/api/oembed.json?url='+encodeURIComponent(w.link)+'&width=960')
+   .then(function(r){if(!r.ok)throw 0;return r.json()})
+   .then(function(j){m.src=j.thumbnail_url})
+   .catch(function(){m.src='https://vumbnail.com/'+pv.id+'.jpg'});
+ }
  a.addEventListener('click',function(e){if(pv){e.preventDefault();openM(pv)}});
  var b=document.createElement('b');b.textContent='Смотреть';box.appendChild(b);
  var meta=document.createElement('div');meta.className='meta';
  var s=document.createElement('strong');s.textContent=w.name;var p=document.createElement('span');p.textContent=w.type;
  meta.appendChild(s);meta.appendChild(p);a.appendChild(box);a.appendChild(meta);$('grid').appendChild(a)});
 var al=$('all');al.textContent=C.works.allText;al.href=C.works.allLink;
+if(!C.works.allLink||C.works.allLink==='#')al.style.display='none';
 T('clientsT',C.clients.title);
 for(var k=0;k<2;k++)C.clients.logos.forEach(function(l){
  var d=document.createElement('div');d.className='lg';
- if(l.src){var i=document.createElement('img');i.src=l.src;i.alt=l.name;i.loading='lazy';d.appendChild(i)}
+ if(l.src){var i=document.createElement('img');i.src=l.src;i.alt=l.name;d.appendChild(i)}
  else{var s=document.createElement('span');s.textContent=l.name;d.appendChild(s)}
  $('tr').appendChild(d)});
 T('cT',C.contacts.title);T('cP',C.contacts.text);
