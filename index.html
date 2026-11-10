@@ -101,6 +101,13 @@ footer .w{height:100%;display:flex;align-items:center;justify-content:space-betw
  .fab{right:16px;bottom:16px;width:52px;padding:0;justify-content:center;border-radius:50%}
  .fab span{display:none}
 }
+/* cookies */
+.ck{position:fixed;left:24px;bottom:24px;z-index:60;max-width:420px;display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--bg);border:1px solid var(--line);font-size:13px;line-height:1.4;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .4s,transform .4s,visibility .4s}
+.ck.on{opacity:1;visibility:visible;transform:none}
+.ck p{margin:0;color:var(--mute)}
+.ck button{flex:none;height:40px;padding:0 18px;background:var(--fg);color:var(--bg);border:1px solid var(--fg);font:inherit;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.3s}
+@media (hover:hover){.ck button:hover{background:transparent;color:var(--fg)}}
+@media (max-width:640px){.ck{left:12px;right:12px;bottom:12px;max-width:none}}
 /* reveal */
 .r{opacity:0;transform:translateY(24px);transition:opacity .8s ease-out,transform .8s ease-out}
 .r.on{opacity:1;transform:none}
@@ -165,6 +172,7 @@ gtag('config','G-SVTCF8SQYH');
 </div></section>
 
 <a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24s-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.07-.1-.23-.16-.48-.29z"/></svg></a>
+<div class="ck" id="ck" role="dialog" aria-label="Cookies"><p>Сайт использует cookies и сервис статистики Google Analytics, чтобы понимать, откуда приходят посетители.</p><button id="ckb" type="button">Понятно</button></div>
 <div class="md" id="md"><button id="mx" aria-label="Закрыть">×</button><div class="box" id="mb"></div></div>
 <footer><div class="w"><span id="copy"></span><a href="#top" id="up"></a></div></footer>
 
@@ -310,6 +318,16 @@ var hd=$('hd');function sc(){hd.classList.toggle('s',scrollY>80)}addEventListene
 var els=document.querySelectorAll('.r');
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});els.forEach(function(e){io.observe(e)})}
 else els.forEach(function(e){e.classList.add('on')});
+/* плашка cookies */
+(function(){
+ var b=$('ck'),key='ck_ok';
+ try{if(localStorage.getItem(key))return}catch(e){}
+ setTimeout(function(){b.classList.add('on')},800);
+ $('ckb').onclick=function(){
+  b.classList.remove('on');
+  try{localStorage.setItem(key,'1')}catch(e){}
+ };
+})();
 
 /* плавающая кнопка WhatsApp */
 (function(){
